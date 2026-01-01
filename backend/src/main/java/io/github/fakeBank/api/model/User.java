@@ -9,11 +9,11 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Entity
-@Table(name = "TB_user")
+@Table(name = "TB_USER")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -21,22 +21,18 @@ public class User {
     private UUID id;
 
     @NotBlank
+    @Column(nullable = false)
     private String name;
 
     @Email
     @NotBlank
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @NotBlank
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String document;
 
     @Column(nullable = false, updatable = false)
-    private Instant createdAt;
-
-    @PrePersist
-    public void prePersist() {
-        this.createdAt = Instant.now();
-    }
+    private Instant createdAt = Instant.now();
 }
