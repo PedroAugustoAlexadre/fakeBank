@@ -28,7 +28,7 @@ public class Account {
 
     @NotBlank
     @Column(nullable = false, unique = true)
-    private String accountNumber;
+    private String accountCode;
 
     @NotNull
     @PositiveOrZero
